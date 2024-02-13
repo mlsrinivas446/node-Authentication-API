@@ -224,6 +224,26 @@ const camelCaseFun = responseObg => {
 app.get('/todos/', Authentication, async (request, response) => {
   const {priority, status, category, search_q = ''} = request.query
 
+  /*const {status = '', search_q = '', priority = '', category = ''} = request
+  console.log(status, search_q, priority, category)
+  const getTodosQuery = `
+        SELECT 
+            id,
+            todo,
+            priority,
+            status,
+            category,
+            due_date AS dueDate 
+        FROM 
+            todo
+        WHERE 
+        todo LIKE '%${search_q}%' AND priority LIKE '%${priority}%' 
+        AND status LIKE '%${status}%' AND category LIKE '%${category}%';`
+
+  const todosArray = await database.all(getTodosQuery)
+  response.send(todosArray)*/
+
+
   switch (true) {
     case status !== undefined:
       console.log(status)
